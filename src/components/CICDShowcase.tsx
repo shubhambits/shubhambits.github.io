@@ -11,38 +11,33 @@ const CICDShowcase: React.FC = () => {
       <pre className="bg-gray-100 p-4 rounded">
         <code>
           {`
-name: CI/CD Pipeline
-
+name: Update Portfolio
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+    branches:
+      - main
+permissions:
+  contents: write 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
-
-      - name: Install dependencies
+          node-version: 23
+          cache: npm
+      - name: Install Dependencies
         run: npm install
-
-      - name: Run tests
-        run: npm test
-
-      - name: Build
+      - name: Build Project
         run: npm run build
-
-      - name: Deploy
-        run: npm run deploy
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
           `}
         </code>
       </pre>
@@ -50,7 +45,7 @@ jobs:
         This YAML configuration defines a CI/CD pipeline that triggers on pushes and pull requests to the `main` branch. It checks out the repository, sets up Node.js, installs dependencies, runs tests, builds the application, and finally deploys it.
       </p>
       <p className="mt-2">
-        For more details, visit my <a href="https://github.com/username/repo" className="text-blue-500 hover:underline">GitHub repository</a>.
+        For more details, visit my <a href="https://github.com/shubhambits/shubhambits.github.io" className="text-blue-500 hover:underline">GitHub repository</a>.
       </p>
     </section>
   );
