@@ -575,7 +575,6 @@ body {
 
 .project-card {
   background: white;
-  padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -584,18 +583,40 @@ body {
   border: 1px solid rgba(0, 120, 212, 0.1);
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-card:nth-child(1) { animation-delay: 0.2s; }
-.project-card:nth-child(2) { animation-delay: 0.3s; }
-.project-card:nth-child(3) { animation-delay: 0.4s; }
-
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+.project-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  background: #f8f9fa;
+  border-radius: 20px 20px 0 0;
 }
 
-.project-card h3 {
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  object-position: center;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.project-content h3 {
   font-size: 1.8rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
@@ -605,16 +626,17 @@ body {
   gap: 0.5rem;
 }
 
-.project-card h3::before {
+.project-content h3::before {
   content: '🚀';
   font-size: 1.5rem;
 }
 
-.project-card p {
+.project-content p {
   color: #666;
   font-size: var(--body-font-size);
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  flex: 1;
 }
 
 .tech-stack {
@@ -642,6 +664,12 @@ body {
   background: linear-gradient(135deg, #ffffff, var(--light-bg));
 }
 
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
 .project-link {
   display: inline-flex;
   align-items: center;
@@ -649,12 +677,14 @@ body {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  margin-top: 1.5rem;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .project-link::before {
@@ -699,14 +729,22 @@ body {
   }
 
   .project-card {
-    padding: 1.5rem;
+    padding: 0;
   }
 
-  .project-card h3 {
+  .project-image {
+    height: 200px;
+  }
+
+  .project-content {
+    padding: 1.2rem;
+  }
+
+  .project-content h3 {
     font-size: 1.5rem;
   }
 
-  .project-card p {
+  .project-content p {
     font-size: 1rem;
   }
 
@@ -742,6 +780,24 @@ body {
   .section-description {
     font-size: 1.1rem;
     max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-image {
+    height: 180px;
+  }
+
+  .project-content {
+    padding: 1rem;
+  }
+
+  .project-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .tech-stack {
+    gap: 0.6rem;
   }
 }
 
@@ -1526,5 +1582,174 @@ body {
 
   .footer-tagline {
     font-size: 0.7rem !important;
+  }
+}
+
+/* Project Dialog Styles */
+.project-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.project-dialog {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dialog-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.dialog-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+  transform: rotate(90deg);
+}
+
+.dialog-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-image img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+}
+
+.dialog-content {
+  padding: 2rem;
+}
+
+.dialog-content h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.dialog-content p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.dialog-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.dialog-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .project-dialog {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .dialog-image {
+    max-height: 400px;
+  }
+  
+  .dialog-image img {
+    max-height: 400px;
+  }
+
+  .dialog-content {
+    padding: 1.5rem;
+  }
+
+  .dialog-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .dialog-content p {
+    font-size: 1rem;
+  }
+
+  .dialog-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dialog-image {
+    max-height: 300px;
+  }
+  
+  .dialog-image img {
+    max-height: 300px;
+  }
+
+  .dialog-content {
+    padding: 1.2rem;
+  }
+
+  .dialog-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .dialog-tech-stack {
+    gap: 0.6rem;
   }
 }
