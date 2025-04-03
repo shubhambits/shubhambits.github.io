@@ -260,6 +260,7 @@ body {
 }
 
 /* CICD Showcase Styles */
+/* CICD Showcase Styles */
 .cicd-showcase {
   padding: 4rem 2rem;
   background: var(--light-bg);
@@ -290,21 +291,95 @@ body {
 
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .expertise-card {
-  background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 120, 212, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .expertise-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+  background: rgba(255, 255, 255, 1);
+}
+
+.expertise-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  background: rgba(0, 120, 212, 0.1);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 120, 212, 0.2);
+}
+
+.expertise-card:hover .expertise-icon {
+  transform: scale(1.1);
+  background: rgba(0, 120, 212, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 120, 212, 0.3);
+  border-color: var(--accent-color);
+}
+
+.expertise-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: 600;
+}
+
+.expertise-card p {
+  color: #333;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.expertise-details {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.expertise-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #444;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.expertise-details .fa-check-circle {
+  color: #4CAF50;
+  font-size: 1.2rem;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 4px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
 }
 
 .code-example {
@@ -395,6 +470,55 @@ body {
 
   .code-example pre {
     font-size: 0.8rem;
+  }
+
+  .expertise-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .expertise-card {
+    padding: 1.5rem;
+  }
+
+  .expertise-icon {
+    font-size: 2rem;
+    width: 70px;
+    height: 70px;
+  }
+
+  .expertise-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .expertise-details li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cicd-showcase {
+    padding: 3rem 1rem;
+  }
+
+  .code-example {
+    padding: 1.5rem;
+    height: 50vh;
+  }
+
+  .code-example h3 {
+    font-size: 1.4rem;
+  }
+
+  .code-example pre {
+    font-size: 0.8rem;
+  }
+
+  .expertise-icon {
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
   }
 }
 
