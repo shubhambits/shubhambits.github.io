@@ -1,33 +1,45 @@
 import React from 'react';
-
-const projects = [
-  {
-    title: 'Project 1',
-    description: 'Description of project 1.',
-    link: 'https://github.com/username/project1',
-  },
-  {
-    title: 'Project 2',
-    description: 'Description of project 2.',
-    link: 'https://github.com/username/project2',
-  },
-];
+import '../App.css';
 
 const Projects: React.FC = () => {
+  const projects = [
+    {
+      title: "Enterprise CI/CD Pipeline",
+      description: "Implemented a comprehensive CI/CD pipeline for a large enterprise application using Azure DevOps YAML templates",
+      technologies: ["Azure DevOps", "YAML", "Docker", "Kubernetes"],
+      link: "#"
+    },
+    {
+      title: "Microservices Deployment Pipeline",
+      description: "Created a scalable pipeline template for deploying microservices architecture with environment-specific configurations",
+      technologies: ["Azure DevOps", "YAML", "Azure Kubernetes Service", "Helm"],
+      link: "#"
+    },
+    {
+      title: "Infrastructure Automation",
+      description: "Developed infrastructure as code pipeline for automated deployment of Azure resources",
+      technologies: ["Azure DevOps", "Terraform", "Azure Resource Manager", "YAML"],
+      link: "#"
+    }
+  ];
+
   return (
-    <section className="p-6 bg-gray-100">
-      <h2 className="text-2xl font-bold">Projects</h2>
-      <ul className="mt-4">
+    <section id="projects" className="projects-section">
+      <h2>Featured Projects</h2>
+      <div className="projects-grid">
         {projects.map((project, index) => (
-          <li key={index} className="mb-4">
-            <h3 className="text-xl">{project.title}</h3>
+          <div key={index} className="project-card">
+            <h3>{project.title}</h3>
             <p>{project.description}</p>
-            <a href={project.link} className="text-blue-500 hover:underline">
-              View on GitHub
-            </a>
-          </li>
+            <div className="tech-stack">
+              {project.technologies.map((tech, techIndex) => (
+                <span key={techIndex} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+            <a href={project.link} className="project-link">View Details</a>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 };
