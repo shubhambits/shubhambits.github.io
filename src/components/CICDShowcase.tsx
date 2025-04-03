@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 
 const CICDShowcase: React.FC = () => {
+  const [templateContent, setTemplateContent] = useState<string>('');
+
+  useEffect(() => {
+    const fetchTemplate = async () => {
+      try {
+        const response = await fetch('/src/assets/pipeline-template.yml');
+        const text = await response.text();
+        setTemplateContent(text);
+      } catch (error) {
+        console.error('Error loading template:', error);
+        setTemplateContent('Error loading template. Please try again later.');
+      }
+    };
+
+    fetchTemplate();
+  }, []);
+
   return (
     <section id="services" className="cicd-showcase" aria-label="CI/CD Services">
       <header>
