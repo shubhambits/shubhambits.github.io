@@ -3,7 +3,7 @@ import '../App.css';
 const CICDShowcase: React.FC = () => {
 
   return (
-    <section id="services" className="cicd-showcase" aria-label="CI/CD Services">
+    <section id="cicd-showcase" className="cicd-showcase" aria-label="CI/CD Services">
       <header>
         <h2>Azure DevOps CI/CD Expertise</h2>
         <p className="section-description">Specialized in creating efficient and scalable CI/CD solutions using Azure DevOps</p>
