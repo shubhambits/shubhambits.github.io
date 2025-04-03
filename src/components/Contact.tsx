@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaEnvelope } from 'react-icons/fa';
+import Footer from './Footer';
 import '../App.css';
 
 const Contact: React.FC = () => {
@@ -24,14 +25,7 @@ const Contact: React.FC = () => {
         </div>
       </div>
       <div className="footer-wrapper">
-        <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-text">
-              <p>© {new Date().getFullYear()} Shubham Agrawal. All rights reserved.</p>
-              <p className="footer-tagline">Crafted with passion and precision.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </section>
   );
