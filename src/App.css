@@ -36,6 +36,7 @@ body {
   height: 100%;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
+  padding-bottom: 5rem;
 }
 
 /* Add scroll-snap-align to all main sections */
@@ -785,8 +786,8 @@ body {
   overflow: hidden;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .contact-section::before {
@@ -1157,5 +1158,130 @@ body {
 
   .pipeline-template-section pre {
     font-size: 0.8rem;
+  }
+}
+
+/* Footer Styles */
+.footer-wrapper {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(42, 42, 42, 0.7) 100%);
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-text p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.footer-tagline {
+  font-size: 0.8rem !important;
+  color: var(--primary-color) !important;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.footer-stats {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.footer-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.footer-stat:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.footer-stat .stat-number {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.footer-stat .stat-label {
+  color: rgba(204, 204, 204, 0.8);
+  font-size: 0.8rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 20px;
+  }
+
+  .footer-wrapper {
+    padding-top: 1.5rem;
+  }
+
+  .footer {
+    padding: 0.75rem 0;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(42, 42, 42, 0.8) 100%);
+  }
+
+  .footer-content {
+    padding: 0 1rem;
+  }
+
+  .footer-text p {
+    font-size: 0.8rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.75rem !important;
+  }
+
+  /* Adjust padding for mobile */
+  .App {
+    padding-bottom: 7rem;
   }
 }
