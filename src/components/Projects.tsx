@@ -20,6 +20,12 @@ const Projects: React.FC = () => {
       description: "Developed infrastructure as code pipeline for automated deployment of Azure resources",
       technologies: ["Azure DevOps", "Terraform", "Azure Resource Manager", "YAML"],
       link: "#"
+    },
+    {
+      title: "Infrastructure Automation",
+      description: "Developed infrastructure as code pipeline for automated deployment of Azure resources",
+      technologies: ["Azure DevOps", "Terraform", "Azure Resource Manager", "YAML"],
+      link: "#"
     }
   ];
 

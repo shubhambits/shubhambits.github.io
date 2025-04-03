@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-import pipelineTemplate from '../assets/pipeline-template.yml?raw';
 
 const CICDShowcase: React.FC = () => {
   return (
@@ -28,16 +27,6 @@ const CICDShowcase: React.FC = () => {
           <p>Automated infrastructure deployment through Azure DevOps pipelines</p>
         </article>
       </div>
-
-      <article className="code-example">
-        <header>
-          <h3>Sample Pipeline Template</h3>
-          <p className="code-description">A reusable YAML template demonstrating best practices in Azure DevOps pipeline configuration</p>
-        </header>
-        <pre>
-          <code>{pipelineTemplate}</code>
-        </pre>
-      </article>
     </section>
   );
 };

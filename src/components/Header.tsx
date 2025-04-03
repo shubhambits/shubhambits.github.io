@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         <ul className="nav-links">
           <li><a onClick={() => scrollToSection('about')}>About</a></li>
           <li><a onClick={() => scrollToSection('projects')}>Projects</a></li>
-          <li><a onClick={() => scrollToSection('cicd-showcase')}>CI/CD</a></li>
+          <li><a onClick={() => scrollToSection('services')}>CI/CD</a></li>
           <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
         </ul>
       </nav>
