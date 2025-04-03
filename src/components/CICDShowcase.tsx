@@ -1,52 +1,78 @@
 import React from 'react';
+import '../App.css';
 
 const CICDShowcase: React.FC = () => {
   return (
-    <section className="p-6 bg-gray-200">
-      <h2 className="text-2xl font-bold">CI/CD Pipeline Showcase</h2>
-      <p className="mt-2">
-        This section showcases the CI/CD pipelines implemented using YAML templates. Below are examples of the configurations used in my projects.
-      </p>
-      <h3 className="mt-4 text-xl">Example YAML Configuration</h3>
-      <pre className="bg-gray-100 p-4 rounded">
-        <code>
-          {`
-name: Update Portfolio
-on:
-  push:
-    branches:
-      - main
-permissions:
-  contents: write 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 23
-          cache: npm
-      - name: Install Dependencies
-        run: npm install
-      - name: Build Project
-        run: npm run build
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
-          `}
-        </code>
-      </pre>
-      <p className="mt-2">
-        This YAML configuration defines a CI/CD pipeline that triggers on pushes and pull requests to the `main` branch. It checks out the repository, sets up Node.js, installs dependencies, runs tests, builds the application, and finally deploys it.
-      </p>
-      <p className="mt-2">
-        For more details, visit my <a href="https://github.com/shubhambits/shubhambits.github.io" className="text-blue-500 hover:underline">GitHub repository</a>.
-      </p>
+    <section id="services" className="cicd-showcase">
+      <h2>Azure DevOps CI/CD Expertise</h2>
+      <div className="expertise-grid">
+        <div className="expertise-card">
+          <h3>Pipeline Templates</h3>
+          <p>Creating reusable YAML templates for consistent CI/CD workflows across projects</p>
+        </div>
+        <div className="expertise-card">
+          <h3>Build Automation</h3>
+          <p>Streamlined build processes with optimized pipeline configurations</p>
+        </div>
+        <div className="expertise-card">
+          <h3>Release Management</h3>
+          <p>Efficient deployment strategies with environment-specific configurations</p>
+        </div>
+        <div className="expertise-card">
+          <h3>Infrastructure as Code</h3>
+          <p>Automated infrastructure deployment through Azure DevOps pipelines</p>
+        </div>
+      </div>
+      <div className="code-example">
+        <h3>Sample Pipeline Template</h3>
+        <pre>
+          <code>
+{`# Azure DevOps Pipeline Template
+parameters:
+  - name: buildConfiguration
+    type: string
+    default: 'Release'
+  - name: projectName
+    type: string
+    default: 'MyProject'
+
+variables:
+  solution: '$(projectName).sln'
+  buildPlatform: 'Any CPU'
+
+stages:
+  - stage: Build
+    displayName: 'Build Stage'
+    jobs:
+      - job: Build
+        displayName: 'Build Job'
+        pool:
+          vmImage: 'windows-latest'
+        steps:
+          - task: NuGetRestore@1
+            displayName: 'Restore NuGet packages'
+            inputs:
+              solution: '$(solution)'
+              feedsToUse: 'config'
+              nugetConfigPath: 'nuget.config'
+              
+          - task: VSBuild@1
+            displayName: 'Build solution'
+            inputs:
+              solution: '$(solution)'
+              platform: '$(buildPlatform)'
+              configuration: $(buildConfiguration)
+              
+          - task: VSTest@2
+            displayName: 'Run unit tests'
+            inputs:
+              testSelector: 'testSuite'
+              testSuite: '**/*.test.dll'
+              platform: '$(buildPlatform)'
+              configuration: $(buildConfiguration)`}
+          </code>
+        </pre>
+      </div>
     </section>
   );
 };
