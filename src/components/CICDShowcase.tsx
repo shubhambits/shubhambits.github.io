@@ -4,32 +4,40 @@ import pipelineTemplate from '../assets/pipeline-template.yml?raw';
 
 const CICDShowcase: React.FC = () => {
   return (
-    <section id="services" className="cicd-showcase">
-      <h2>Azure DevOps CI/CD Expertise</h2>
-      <div className="expertise-grid">
-        <div className="expertise-card">
+    <section id="services" className="cicd-showcase" aria-label="CI/CD Services">
+      <header>
+        <h2>Azure DevOps CI/CD Expertise</h2>
+        <p className="section-description">Specialized in creating efficient and scalable CI/CD solutions using Azure DevOps</p>
+      </header>
+      
+      <div className="expertise-grid" role="list">
+        <article className="expertise-card" role="listitem">
           <h3>Pipeline Templates</h3>
           <p>Creating reusable YAML templates for consistent CI/CD workflows across projects</p>
-        </div>
-        <div className="expertise-card">
+        </article>
+        <article className="expertise-card" role="listitem">
           <h3>Build Automation</h3>
           <p>Streamlined build processes with optimized pipeline configurations</p>
-        </div>
-        <div className="expertise-card">
+        </article>
+        <article className="expertise-card" role="listitem">
           <h3>Release Management</h3>
           <p>Efficient deployment strategies with environment-specific configurations</p>
-        </div>
-        <div className="expertise-card">
+        </article>
+        <article className="expertise-card" role="listitem">
           <h3>Infrastructure as Code</h3>
           <p>Automated infrastructure deployment through Azure DevOps pipelines</p>
-        </div>
+        </article>
       </div>
-      <div className="code-example">
-        <h3>Sample Pipeline Template</h3>
+
+      <article className="code-example">
+        <header>
+          <h3>Sample Pipeline Template</h3>
+          <p className="code-description">A reusable YAML template demonstrating best practices in Azure DevOps pipeline configuration</p>
+        </header>
         <pre>
           <code>{pipelineTemplate}</code>
         </pre>
-      </div>
+      </article>
     </section>
   );
 };
