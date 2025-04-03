@@ -25,7 +25,11 @@ const Projects: React.FC = () => {
 
   return (
     <section id="projects" className="projects-section">
-      <h2>Featured Projects</h2>
+      <div className="section-header">
+        <h2>Technical Projects</h2>
+        <div className="section-underline"></div>
+        <p className="section-description">Explore my portfolio of CI/CD and infrastructure automation projects</p>
+      </div>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <div key={index} className="project-card">
