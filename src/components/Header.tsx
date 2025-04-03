@@ -2,28 +2,39 @@ import React from 'react';
 import '../App.css';
 
 const Header: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="header">
       <nav className="nav-container">
-        <div className="logo">Shubham Agrawal</div>
+        <div className="logo">SA</div>
         <ul className="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a onClick={() => scrollToSection('about')}>About</a></li>
+          <li><a onClick={() => scrollToSection('projects')}>Projects</a></li>
+          <li><a onClick={() => scrollToSection('cicd-showcase')}>CI/CD</a></li>
+          <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
         </ul>
       </nav>
       <div className="hero-section">
         <div className="hero-content">
-          <h1>Azure DevOps <span>CI/CD</span> Specialist</h1>
-          <p className="hero-subtitle">Transforming software delivery with templatized YAML pipelines</p>
+          <h1>Hi, I'm <span>Shubham Agrawal</span></h1>
+          <p className="hero-subtitle">Azure DevOps CI/CD Specialist</p>
           <div className="hero-description">
-            <p>Expert in creating efficient, scalable, and maintainable CI/CD pipelines using Azure DevOps</p>
-            <p>Specializing in YAML-based pipeline templates and infrastructure automation</p>
+            <p>Transforming complex software delivery processes into streamlined, automated workflows</p>
+            <p>Expert in pipeline automation, infrastructure as code, and continuous delivery</p>
           </div>
           <div className="hero-buttons">
-            <button className="cta-button primary">View My Work</button>
-            <button className="cta-button secondary">Contact Me</button>
+            <button className="cta-button primary" onClick={() => scrollToSection('projects')}>
+              View My Work
+            </button>
+            <button className="cta-button secondary" onClick={() => scrollToSection('contact')}>
+              Get in Touch
+            </button>
           </div>
         </div>
         <div className="hero-stats">
