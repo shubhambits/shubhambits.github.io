@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaUser, FaCode, FaCogs, FaEnvelope } from 'react-icons/fa';
 import '../App.css';
 
 const Header: React.FC = () => {
@@ -26,25 +25,21 @@ const Header: React.FC = () => {
         <ul className="nav-links">
           <li>
             <a onClick={() => scrollToSection('about')}>
-              <FaUser />
               About
             </a>
           </li>
           <li>
             <a onClick={() => scrollToSection('projects')}>
-              <FaCode />
               Projects
             </a>
           </li>
           <li>
             <a onClick={() => scrollToSection('cicd-showcase')}>
-              <FaCogs />
               CI/CD
             </a>
           </li>
           <li>
             <a onClick={() => scrollToSection('contact')}>
-              <FaEnvelope />
               Contact
             </a>
           </li>
