@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaUser, FaCode, FaCogs, FaEnvelope } from 'react-icons/fa';
 import '../App.css';
 
 const Header: React.FC = () => {
@@ -9,15 +10,44 @@ const Header: React.FC = () => {
     }
   };
 
+  const scrollToTop = () => {
+    const header = document.querySelector('.header');
+    if (header) {
+      header.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="header">
       <nav className="nav-container">
-        <div className="logo">SA</div>
+        <div className="logo" onClick={scrollToTop} style={{ cursor: 'pointer' }}>
+          SA
+        </div>
         <ul className="nav-links">
-          <li><a onClick={() => scrollToSection('about')}>About</a></li>
-          <li><a onClick={() => scrollToSection('projects')}>Projects</a></li>
-          <li><a onClick={() => scrollToSection('services')}>CI/CD</a></li>
-          <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
+          <li>
+            <a onClick={() => scrollToSection('about')}>
+              <FaUser />
+              About
+            </a>
+          </li>
+          <li>
+            <a onClick={() => scrollToSection('projects')}>
+              <FaCode />
+              Projects
+            </a>
+          </li>
+          <li>
+            <a onClick={() => scrollToSection('cicd-showcase')}>
+              <FaCogs />
+              CI/CD
+            </a>
+          </li>
+          <li>
+            <a onClick={() => scrollToSection('contact')}>
+              <FaEnvelope />
+              Contact
+            </a>
+          </li>
         </ul>
       </nav>
       <div className="hero-section">
